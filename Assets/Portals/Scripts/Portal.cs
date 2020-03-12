@@ -22,18 +22,18 @@ public class Portal : MonoBehaviour
         RenderPipeline.beginCameraRendering -= UpdateCamera;
     }
 
-    void UpdateCamera(ScriptableRenderContext empty, Camera camera)
+    void UpdateCamera(ScriptableRenderContext empty, Camera playerCamera)
     {
-        if ((camera.cameraType == CameraType.Game || camera.cameraType == CameraType.SceneView) &&
-            camera.tag != "Portal Camera")
+        if ((playerCamera.cameraType == CameraType.Game || playerCamera.cameraType == CameraType.SceneView) &&
+            playerCamera.tag != "Portal Camera")
         {
-            portalCamera.projectionMatrix = camera.projectionMatrix; // Match matrices
+            portalCamera.projectionMatrix = playerCamera.projectionMatrix; // Match matrices
 
-            var relativePosition = transform.InverseTransformPoint(camera.transform.position);
+            var relativePosition = transform.InverseTransformPoint(playerCamera.transform.position);
             relativePosition = Vector3.Scale(relativePosition, new Vector3(-1, 1, -1));
             portalCamera.transform.position = pairPortal.TransformPoint(relativePosition);
 
-            var relativeRotation = transform.InverseTransformDirection(camera.transform.forward);
+            var relativeRotation = transform.InverseTransformDirection(playerCamera.transform.forward);
             relativeRotation = Vector3.Scale(relativeRotation, new Vector3(-1, 1, -1));
             portalCamera.transform.forward = pairPortal.TransformDirection(relativeRotation);
         }
