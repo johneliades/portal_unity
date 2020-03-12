@@ -52,6 +52,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 4d1749889feba477e8855c99e71e9df3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_784E14FF_Out_0:
+        m_Texture: {fileID: 2800000, guid: 4d1749889feba477e8855c99e71e9df3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaClip: 0
     - _Blend: 0

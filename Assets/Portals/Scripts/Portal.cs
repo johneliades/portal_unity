@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.LWRP;
-using RenderPipeline = UnityEngine.Experimental.Rendering.RenderPipeline;
+using UnityEditor.Rendering.Universal;
+using RenderPipeline = UnityEngine.Rendering.RenderPipelineManager;
 
 [ExecuteInEditMode]
 public class Portal : MonoBehaviour
@@ -22,7 +22,7 @@ public class Portal : MonoBehaviour
         RenderPipeline.beginCameraRendering -= UpdateCamera;
     }
 
-    void UpdateCamera(Camera camera)
+    void UpdateCamera(ScriptableRenderContext empty, Camera camera)
     {
         if ((camera.cameraType == CameraType.Game || camera.cameraType == CameraType.SceneView) &&
             camera.tag != "Portal Camera")

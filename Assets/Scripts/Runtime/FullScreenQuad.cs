@@ -1,11 +1,13 @@
-﻿namespace UnityEngine.Rendering.LWRP
+﻿using UnityEngine;
+
+namespace UnityEditor.Rendering.Universal
 {
-    public class FullScreenQuad : ScriptableRendererFeature
+    public class FullScreenQuad : UnityEngine.Rendering.Universal.ScriptableRendererFeature
     {
         [System.Serializable]
         public struct FullScreenQuadSettings
         {
-            public RenderPassEvent renderPassEvent;
+            public UnityEngine.Rendering.Universal.RenderPassEvent renderPassEvent;
             public Material material;
         }
 
@@ -17,7 +19,7 @@
             m_RenderQuadPass = new FullScreenQuadPass(m_Settings);
         }
 
-        public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
+        public override void AddRenderPasses(UnityEngine.Rendering.Universal.ScriptableRenderer renderer, ref UnityEngine.Rendering.Universal.RenderingData renderingData)
         {
             if (m_Settings.material != null)
                 renderer.EnqueuePass(m_RenderQuadPass);
