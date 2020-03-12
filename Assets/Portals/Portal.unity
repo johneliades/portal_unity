@@ -1269,6 +1269,10 @@ PrefabInstance:
       propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_JumpSpeed
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
 --- !u!1 &1019346062
@@ -1771,17 +1775,17 @@ PrefabInstance:
     - target: {fileID: 1834377649702207032, guid: 2f06cc6f170e4ab459ec2a601d7d91d2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.691177
+      value: 2.196527
       objectReference: {fileID: 0}
     - target: {fileID: 1834377649702207032, guid: 2f06cc6f170e4ab459ec2a601d7d91d2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.315731
+      value: 26.988173
       objectReference: {fileID: 0}
     - target: {fileID: 1834377649702207032, guid: 2f06cc6f170e4ab459ec2a601d7d91d2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.4667497
+      value: -0.0024546518
       objectReference: {fileID: 0}
     - target: {fileID: 2958224665163556655, guid: 2f06cc6f170e4ab459ec2a601d7d91d2,
         type: 3}
@@ -2819,17 +2823,17 @@ PrefabInstance:
     - target: {fileID: 1834377649702207032, guid: 2f06cc6f170e4ab459ec2a601d7d91d2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.5148944
+      value: -12.361736
       objectReference: {fileID: 0}
     - target: {fileID: 1834377649702207032, guid: 2f06cc6f170e4ab459ec2a601d7d91d2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -46.918823
+      value: -11.188343
       objectReference: {fileID: 0}
     - target: {fileID: 1834377649702207032, guid: 2f06cc6f170e4ab459ec2a601d7d91d2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.7667494
+      value: -1.702455
       objectReference: {fileID: 0}
     - target: {fileID: 2958224665163556655, guid: 2f06cc6f170e4ab459ec2a601d7d91d2,
         type: 3}
