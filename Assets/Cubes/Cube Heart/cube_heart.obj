@@ -1,6 +1,6 @@
 # Blender v2.82 (sub 7) OBJ File: ''
 # www.blender.org
-mtllib cube.mtl
+mtllib cube_heart.mtl
 o DrawCall_0033
 v -0.020230 -0.443269 0.132913
 v -0.026584 -0.449745 0.132721

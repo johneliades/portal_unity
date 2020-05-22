@@ -1,6 +1,6 @@
 # Blender v2.82 (sub 7) OBJ File: ''
 # www.blender.org
-mtllib cube.mtl
+mtllib cube_original.mtl
 o port_metal_box_original_textures
 v -0.173678 0.835301 -0.466799
 v -0.222125 0.916612 -0.534458
