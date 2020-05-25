@@ -53,7 +53,8 @@ public class Portal : MonoBehaviour
 				Vector3 positionOffset = Quaternion.Euler(0f,
 					rotationDiff, 0f) * portalToPlayer;
 				
-				player.transform.position = pairPortal.transform.position + positionOffset;
+				player.transform.position = pairPortal.transform.
+					Find("Spawn").position + positionOffset;
 			}
 		}
 	}
