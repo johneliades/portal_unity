@@ -10,11 +10,10 @@ using RenderPipeline = UnityEngine.Rendering.RenderPipelineManager;
 public class Portal : MonoBehaviour
 {
 	public Camera portalCamera;
-	public Transform pairPortal;
+	public GameObject pairPortal;
 	private GameObject player;
 	private CharacterController cc;
-	private Vector3 portalNormal;
-	private bool overlapping = false;
+	private bool active = true;
 
 	void Start()
 	{
@@ -34,21 +33,10 @@ public class Portal : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if(other.gameObject == player) {
-			overlapping = true;
-		}
-	}
+		if(active && other.gameObject == player) {
+			pairPortal.GetComponent<Portal>().active = false;
+			active = false;
 
-	void OnTriggerExit(Collider other)
-	{
-		if(other.gameObject == player) {
-			overlapping = false;
-		}
-	}
-
-	void Update()
-	{
-		if (overlapping) {
 			Vector3 portalToPlayer = cc.transform.position - transform.position;
 			float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
 
@@ -57,7 +45,7 @@ public class Portal : MonoBehaviour
 			{
 				// Teleport him!
 				float rotationDiff = -Quaternion.Angle(transform.rotation,
-					pairPortal.rotation);
+					pairPortal.transform.rotation);
 				
 				rotationDiff += 180;
 				player.transform.Rotate(Vector3.up, rotationDiff);
@@ -65,11 +53,21 @@ public class Portal : MonoBehaviour
 				Vector3 positionOffset = Quaternion.Euler(0f,
 					rotationDiff, 0f) * portalToPlayer;
 				
-				player.transform.position = pairPortal.position + positionOffset;
-
-				overlapping = false;
+				player.transform.position = pairPortal.transform.position + positionOffset;
 			}
 		}
+	}
+
+	void OnTriggerExit(Collider other)
+	{
+		if(other.gameObject == player) {
+			active = true;
+		}
+	}
+
+	void Update()
+	{
+
 	}
 
 	void UpdateCamera(ScriptableRenderContext empty, Camera camera)
@@ -81,11 +79,11 @@ public class Portal : MonoBehaviour
 
 			var relativePosition = transform.InverseTransformPoint(camera.transform.position);
 			relativePosition = Vector3.Scale(relativePosition, new Vector3(-1, 1, -1));
-			portalCamera.transform.position = pairPortal.TransformPoint(relativePosition);
+			portalCamera.transform.position = pairPortal.transform.TransformPoint(relativePosition);
 
 			var relativeRotation = transform.InverseTransformDirection(camera.transform.forward);
 			relativeRotation = Vector3.Scale(relativeRotation, new Vector3(-1, 1, -1));
-			portalCamera.transform.forward = pairPortal.TransformDirection(relativeRotation);
+			portalCamera.transform.forward = pairPortal.transform.TransformDirection(relativeRotation);
 		}
 	}
 }
