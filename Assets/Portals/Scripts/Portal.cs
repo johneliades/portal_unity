@@ -14,7 +14,7 @@ public class Portal : MonoBehaviour
 	private GameObject player;
 	private CharacterController cc;
 	private Vector3 portalNormal;
-	float disableTimer = 0;
+	private bool overlapping = false;
 
 	void Start()
 	{
@@ -32,36 +32,44 @@ public class Portal : MonoBehaviour
 		RenderPipeline.beginCameraRendering -= UpdateCamera;
 	}
 
-	void OnTriggerEnter(Collider collider)
+	void OnTriggerEnter(Collider other)
 	{
-		Debug.Log("WTF");
-		if (disableTimer <= 0 && collider.gameObject == player) {
-			disableTimer = 1;
+		if(other.gameObject == player) {
+			overlapping = true;
+		}
+	}
 
-			/* change the direction of the player's velocity to be the same as
-			the portalNormal direction */
-			Vector3 exitVelocity = portalNormal * cc.velocity.magnitude;
-			cc.Move(exitVelocity);
-		//	cc.velocity = exitVelocity;
-
-			//set the player position to just in front of the portal.
-			Vector3 exitPosition = pairPortal.transform.position;
-			player.transform.position = exitPosition;
-
-			/* disable player movement while in the air. This is turned back on when
-				the player hits the ground. */
-//			cm.isInputEnabled = false;
-			//play the teleport sound
-
-	//		audioSource.clip = teleportSound;
-	//		audioSource.Play();
+	void OnTriggerExit(Collider other)
+	{
+		if(other.gameObject == player) {
+			overlapping = false;
 		}
 	}
 
 	void Update()
 	{
-		if (disableTimer > 0)
-			disableTimer -= Time.deltaTime;
+		if (overlapping) {
+			Vector3 portalToPlayer = cc.transform.position - transform.position;
+			float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
+
+			// If this is true: The player has moved across the portal
+			if (dotProduct < 0f)
+			{
+				// Teleport him!
+				float rotationDiff = -Quaternion.Angle(transform.rotation,
+					pairPortal.rotation);
+				
+				rotationDiff += 180;
+				player.transform.Rotate(Vector3.up, rotationDiff);
+
+				Vector3 positionOffset = Quaternion.Euler(0f,
+					rotationDiff, 0f) * portalToPlayer;
+				
+				player.transform.position = pairPortal.position + positionOffset;
+
+				overlapping = false;
+			}
+		}
 	}
 
 	void UpdateCamera(ScriptableRenderContext empty, Camera camera)
