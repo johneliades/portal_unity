@@ -31,7 +31,7 @@ public class Teleport : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void Update()
+	void LateUpdate()
 	{
 		//Debug.Log(transform.up+" "+player.transform.position+" "+Vector3.Dot(transform.up, portalToPlayer)+this.name);
 		
@@ -47,6 +47,7 @@ public class Teleport : MonoBehaviour
 				// Teleport him!
 				float rotationDiff = -Quaternion.Angle(transform.rotation,
 					pairCollider.rotation);
+				
 				rotationDiff += 180;
 				player.transform.Rotate(Vector3.up, rotationDiff);
 

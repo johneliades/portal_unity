@@ -22,7 +22,7 @@ namespace UnityStandardAssets.Utility
         }
 
         [SerializeField]
-        private BuildTargetGroup m_BuildTargetGroup;
+        private BuildTargetGroup m_BuildTargetGroup = BuildTargetGroup.Standalone;
         [SerializeField]
         private GameObject[] m_Content = new GameObject[0];
         [SerializeField]
