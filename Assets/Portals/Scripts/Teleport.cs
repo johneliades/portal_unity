@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Teleport : MonoBehaviour
 {
@@ -48,7 +49,6 @@ public class Teleport : MonoBehaviour
 				float rotationDiff = -Quaternion.Angle(transform.rotation,
 					pairCollider.rotation);
 				
-				rotationDiff += 180;
 				player.transform.Rotate(Vector3.up, rotationDiff);
 
 				Vector3 positionOffset = Quaternion.Euler(0f,
@@ -56,7 +56,7 @@ public class Teleport : MonoBehaviour
 				
 				player.transform.position = pairCollider.position + positionOffset;
 				playerIsOverlapping = false;
-
+				player.GetComponent<FirstPersonController>().MouseReset();
 				cc.enabled = true;
 			}
 		}
