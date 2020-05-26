@@ -35,7 +35,6 @@ public class Portal : MonoBehaviour
 	{
 		if(active && other.gameObject == player) {
 			pairPortal.GetComponent<Portal>().active = false;
-			active = false;
 
 			Vector3 portalToPlayer = cc.transform.position - transform.position;
 			float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
@@ -43,6 +42,8 @@ public class Portal : MonoBehaviour
 			// If this is true: The player has moved across the portal
 			if (dotProduct < 0f)
 			{
+				cc.enabled = false;
+
 				// Teleport him!
 				float rotationDiff = -Quaternion.Angle(transform.rotation,
 					pairPortal.transform.rotation);
@@ -55,6 +56,8 @@ public class Portal : MonoBehaviour
 				
 				player.transform.position = pairPortal.transform.
 					Find("Spawn").position + positionOffset;
+			
+				cc.enabled = true;
 			}
 		}
 	}
@@ -64,11 +67,6 @@ public class Portal : MonoBehaviour
 		if(other.gameObject == player) {
 			active = true;
 		}
-	}
-
-	void Update()
-	{
-
 	}
 
 	void UpdateCamera(ScriptableRenderContext empty, Camera camera)
