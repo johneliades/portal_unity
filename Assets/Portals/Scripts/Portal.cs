@@ -11,9 +11,11 @@ public class Portal : MonoBehaviour
 {
 	public Camera portalCamera;
 	public GameObject pairPortal;
+	
 	private GameObject player;
 	private CharacterController cc;
 	private bool active = true;
+	private bool playerIsOverlapping = false;
 
 	void Start()
 	{
@@ -31,45 +33,6 @@ public class Portal : MonoBehaviour
 		RenderPipeline.beginCameraRendering -= UpdateCamera;
 	}
 
-	void OnTriggerEnter(Collider other)
-	{
-		if(active && other.gameObject == player) {
-			pairPortal.GetComponent<Portal>().active = false;
-			active = false;
-
-			Vector3 portalToPlayer = cc.transform.position - transform.position;
-			float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
-
-			// If this is true: The player has moved across the portal
-			if (dotProduct < 0f)
-			{
-				// Teleport him!
-				float rotationDiff = -Quaternion.Angle(transform.rotation,
-					pairPortal.transform.rotation);
-				
-				rotationDiff += 180;
-				player.transform.Rotate(Vector3.up, rotationDiff);
-
-				Vector3 positionOffset = Quaternion.Euler(0f,
-					rotationDiff, 0f) * portalToPlayer;
-				
-				player.transform.position = pairPortal.transform.
-					Find("Spawn").position + positionOffset;
-			}
-		}
-	}
-
-	void OnTriggerExit(Collider other)
-	{
-		if(other.gameObject == player) {
-			active = true;
-		}
-	}
-
-	void Update()
-	{
-
-	}
 
 	void UpdateCamera(ScriptableRenderContext empty, Camera camera)
 	{
