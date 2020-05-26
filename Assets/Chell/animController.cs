@@ -15,9 +15,12 @@ public class animController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if(Input.GetKeyDown("w") || Input.GetKeyDown("s")) {
+		if(Input.GetKeyDown("w") || Input.GetKeyDown("s"))
 			anim.Play("Walk");
-		}
+
+		if(Input.GetKey("space"))
+			anim.Play("Jump");
+
 		if(Input.GetKeyUp("w") || Input.GetKeyUp("s")) {
 			anim.Play("Idle");
 		}
