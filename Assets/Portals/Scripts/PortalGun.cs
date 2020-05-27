@@ -4,7 +4,8 @@ using UnityEngine;
  
 public class PortalGun : MonoBehaviour {
  
-	public AudioClip portalSound;
+	public AudioClip portalSoundBlue;
+	public AudioClip portalSoundOrange;
 	public AudioClip errorSound;
  	private AudioSource audioSrc;
 
@@ -34,10 +35,9 @@ public class PortalGun : MonoBehaviour {
 		if (Physics.Raycast(Camera.main.transform.position,
 			Camera.main.transform.forward, out hit, Mathf.Infinity)) {
 			
+			AudioClip portalSound = type == "orange" ? portalSoundOrange : portalSoundBlue;
 			audioSrc.PlayOneShot(portalSound);
-//			portalSound.Play();
-			
-			// choose between the correct portals based on string input
+
 			GameObject portal = type == "orange" ? orangePortal : bluePortal;
  
 			// set the portal to the same position as the raycast point, and set
@@ -50,7 +50,6 @@ public class PortalGun : MonoBehaviour {
 		} 
 		else {
 			audioSrc.PlayOneShot(errorSound);
-//			errorSound.Play();
 		}
 	}
 }
