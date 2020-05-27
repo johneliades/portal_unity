@@ -9,7 +9,6 @@ public class PortalGun : MonoBehaviour {
  
 	public GameObject orangePortal;
 	public GameObject bluePortal;
-	public GameObject gunTip;
  
 	// Use this for initialization
 	void Start () {
@@ -32,8 +31,8 @@ public class PortalGun : MonoBehaviour {
 		RaycastHit hit;
  
 		// if we collide with an object with our raycast, spawn a portal there
-		if (Physics.Raycast(gunTip.transform.position,
-			transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity)) {
+		if (Physics.Raycast(Camera.main.transform.position,
+			Camera.main.transform.forward, out hit, Mathf.Infinity)) {
 			
 //			portalSound.Play();
 			
