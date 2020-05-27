@@ -675,7 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 541e5011a1bf1fa4a9b48178c3d14a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portalSound: {fileID: 8300000, guid: 0c91bf0ad561792439b7791eca9a3267, type: 3}
+  portalSound: {fileID: 8300000, guid: 9409114696a2a0241afdfda3a6593bb7, type: 3}
   errorSound: {fileID: 8300000, guid: 60bc06564e25e064b9d768732f8c7b5b, type: 3}
   orangePortal: {fileID: 1953763303}
   bluePortal: {fileID: 397361903}
