@@ -4,25 +4,25 @@ using UnityEngine;
  
 public class PortalGun : MonoBehaviour {
  
-//	private AudioSource portalSound;
-//	private AudioSource errorSound;
- 
+	public AudioClip portalSound;
+	public AudioClip errorSound;
+ 	private AudioSource audioSrc;
+
 	public GameObject orangePortal;
 	public GameObject bluePortal;
  
 	// Use this for initialization
 	void Start () {
-//        portalSound = GetComponents<AudioSource>()[0];
-//        errorSound = GetComponents<AudioSource>()[1];
+		audioSrc = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		// fire the right portal (left or right) based on input
 		if (Input.GetButtonDown("Fire1")) {
-			FirePortal("orange");
-		} else if (Input.GetButtonDown("Fire2")) {
 			FirePortal("blue");
+		} else if (Input.GetButtonDown("Fire2")) {
+			FirePortal("orange");
 		}
 	}
  
@@ -34,10 +34,11 @@ public class PortalGun : MonoBehaviour {
 		if (Physics.Raycast(Camera.main.transform.position,
 			Camera.main.transform.forward, out hit, Mathf.Infinity)) {
 			
+			audioSrc.PlayOneShot(portalSound);
 //			portalSound.Play();
 			
 			// choose between the correct portals based on string input
-			GameObject portal = type == "orange" ? bluePortal : orangePortal;
+			GameObject portal = type == "orange" ? orangePortal : bluePortal;
  
 			// set the portal to the same position as the raycast point, and set
 			// its rotation to orient to the wall relative to what its "up" direction is,
@@ -48,6 +49,7 @@ public class PortalGun : MonoBehaviour {
 //			bluePortal.GetComponentInChildren<Camera>().Render();
 		} 
 		else {
+			audioSrc.PlayOneShot(errorSound);
 //			errorSound.Play();
 		}
 	}
