@@ -45,6 +45,12 @@ public class PortalGun : MonoBehaviour {
 			// which is Vector.up in world space 
 			portal.transform.SetPositionAndRotation(
 				hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal));
+
+ 			orangePortal.transform.eulerAngles = new Vector3(
+ 				orangePortal.transform.eulerAngles.x,
+ 				orangePortal.transform.eulerAngles.y,
+ 				bluePortal.transform.eulerAngles.z);
+
 //			orangePortal.GetComponentInChildren<Camera>().Render();
 //			bluePortal.GetComponentInChildren<Camera>().Render();
 		} 
