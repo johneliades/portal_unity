@@ -45,10 +45,11 @@ public class Teleport : MonoBehaviour
 			{
 				cc.enabled = false;
 
+				float yRot = transform.eulerAngles.y;
+				float yPairRot = pairCollider.eulerAngles.y;
+
 				// Teleport him!
-				float rotationDiff = -Quaternion.Angle(transform.rotation,
-					pairCollider.rotation);
-				
+				float rotationDiff = 180 - (yRot - yPairRot);
 				player.transform.Rotate(Vector3.up, rotationDiff);
 
 				Vector3 positionOffset = Quaternion.Euler(0f,
