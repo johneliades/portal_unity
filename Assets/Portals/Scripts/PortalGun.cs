@@ -38,7 +38,7 @@ public class PortalGun : MonoBehaviour {
 //			portalSound.Play();
 			
 			// choose between the correct portals based on string input
-			GameObject portal = type == "orange" ? orangePortal : bluePortal;
+			GameObject portal = type == "orange" ? bluePortal : orangePortal;
  
 			// set the portal to the same position as the raycast point, and set
 			// its rotation to orient to the wall relative to what its "up" direction is,
