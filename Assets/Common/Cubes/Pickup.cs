@@ -17,6 +17,10 @@ public class Pickup : MonoBehaviour
 		smooth = 20;
 	}
 	
+	public GameObject getCarriedObject() {
+		return carriedObject;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if(carrying) {
