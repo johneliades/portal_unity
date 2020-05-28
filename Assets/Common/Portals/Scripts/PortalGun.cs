@@ -50,9 +50,6 @@ public class PortalGun : MonoBehaviour {
  				orangePortal.transform.eulerAngles.x,
  				orangePortal.transform.eulerAngles.y,
  				bluePortal.transform.eulerAngles.z);
-
-//			orangePortal.GetComponentInChildren<Camera>().Render();
-//			bluePortal.GetComponentInChildren<Camera>().Render();
 		} 
 		else {
 			audioSrc.PlayOneShot(errorSound);
