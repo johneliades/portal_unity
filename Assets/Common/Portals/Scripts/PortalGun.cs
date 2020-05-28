@@ -34,12 +34,19 @@ public class PortalGun : MonoBehaviour {
 		// if we collide with an object with our raycast, spawn a portal there
 		if (Physics.Raycast(Camera.main.transform.position,
 			Camera.main.transform.forward, out hit, Mathf.Infinity)) {
-			
+	
+			// Check if object has disablePortalSpawn Script.
+			disablePortalSpawn check = hit.collider.GetComponent<disablePortalSpawn>();	
+			if(check != null) {
+				audioSrc.PlayOneShot(errorSound);
+				return;
+			}
+
 			AudioClip portalSound = type == "orange" ? portalSoundOrange : portalSoundBlue;
 			audioSrc.PlayOneShot(portalSound);
 
 			GameObject portal = type == "orange" ? orangePortal : bluePortal;
- 
+
 			// set the portal to the same position as the raycast point, and set
 			// its rotation to orient to the wall relative to what its "up" direction is,
 			// which is Vector.up in world space 
