@@ -18,7 +18,7 @@ public class animController : MonoBehaviour
 		if(Input.GetKeyDown("w") || Input.GetKeyDown("s"))
 			anim.Play("Walk");
 
-		if(Input.GetKey("space"))
+		if(Input.GetKeyDown("space"))
 			anim.Play("Jump");
 
 		if(Input.GetKeyUp("w") || Input.GetKeyUp("s")) {
