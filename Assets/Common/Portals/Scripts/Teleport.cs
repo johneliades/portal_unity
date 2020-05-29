@@ -85,6 +85,10 @@ public class Teleport : MonoBehaviour
 					toMove.GetComponent<FirstPersonController>().MouseReset();
 					cc.enabled = true;
 				}
+				else {
+					toMove.GetComponent<Rigidbody>().velocity = pairCollider.forward
+						* toMove.GetComponent<Rigidbody>().velocity.magnitude;
+				}
 				
 				overlapping = false;
 			}
