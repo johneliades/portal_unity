@@ -20,9 +20,10 @@ public class PortalGun : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// fire the right portal (left or right) based on input
-		if (Input.GetButtonDown("Fire1")) {
+		if (Input.GetMouseButtonDown(0)) {
 			FirePortal("blue");
-		} else if (Input.GetButtonDown("Fire2")) {
+		}
+		else if(Input.GetMouseButtonDown(1)) {
 			FirePortal("orange");
 		}
 	}
