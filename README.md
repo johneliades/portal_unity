@@ -7,7 +7,7 @@ Demo: https://johneliades.github.io/images/demo.mp4
 
 Original project: https://www.youtube.com/watch?v=TkzASwVgnj8
 
-![Image of website](https://github.com/johneliades/portal/blob/master/preview.png)
+![Image of website](https://github.com/johneliades/portal_unity/blob/master/preview.png)
 
 **Eliades John** - *Developer* - [Github](https://github.com/johneliades)
 
